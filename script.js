@@ -1,21 +1,31 @@
 let sec = document.getElementById('seconds')
-let s = 0
-let second = 1000
-setInterval(()=>{
-    s+=6/100;
-    sec.setAttributeNS(null,'transform','rotate('+ s +')')
-},second/100)
-
 let min = document.getElementById('minute')
-let m = 0
+let hour = document.getElementById('hour')
+
+let second = 1000
+let time = new Date();
+
+let s = time.getSeconds()*6
+let h = time.getHours()*30
+let m = time.getMinutes()*6
+sec.setAttributeNS(null,'transform','rotate('+ s +')')
+min.setAttributeNS(null,'transform','rotate('+ m +')')
+hour.setAttributeNS(null,'transform','rotate('+ h +')')
+
 setInterval(()=>{
-    m+=0.1;
+    time = new Date()
+    s = time.getSeconds()*6
+    sec.setAttributeNS(null,'transform','rotate('+ s +')')
+},second)
+
+setInterval(()=>{
+    time = new Date()
+    m = time.getMinutes()*6
     min.setAttributeNS(null,'transform','rotate('+ m +')')
 },second)
 
-let hour = document.getElementById('hour')
-let h = 0
 setInterval(()=>{
-    h+=0.5;
+    time = new Date()
+    h = time.getHours()*30
     hour.setAttributeNS(null,'transform','rotate('+ h +')')
-},second*60)
+},second)
